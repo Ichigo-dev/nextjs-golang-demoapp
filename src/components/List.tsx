@@ -1,5 +1,6 @@
 import React from "react";
 import ListItem from "./ListItem";
+import NewListItem from "./NewListItem";
 
 const List: React.FC<{ contents: any }> = ({ contents }) => {
   return (
@@ -7,6 +8,7 @@ const List: React.FC<{ contents: any }> = ({ contents }) => {
       {contents.map((c) => (
         <ListItem key={c.id} content={c} />
       ))}
+      <NewListItem />
     </div>
   );
 };
