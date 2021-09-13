@@ -1,19 +1,8 @@
 import { NextPage } from "next";
-import { PureComponent } from "react";
-import Link from "next/link";
-import { useState } from "react";
-import ListItem from "../../components/ListItem";
+import List from "../../components/List";
 
 const Contents: NextPage<{ contents: any }> = (props) => {
-  return (
-    <div>
-      {props.contents.map(
-        (c: { id: number; name: string; text: string }, i: number) => {
-          return <ListItem key={i} content={c} />;
-        }
-      )}
-    </div>
-  );
+  return <List contents={props.contents} />;
 };
 
 export default Contents;
