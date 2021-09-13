@@ -8,6 +8,7 @@ const ListItem: React.FC<{ content: any }> = (props) => {
   };
 
   const closeHandle = () => {
+    // TODO: API叩く
     setEdit(!edit);
   };
 
@@ -28,6 +29,7 @@ const ListItem: React.FC<{ content: any }> = (props) => {
   };
 
   const deleteHandle = () => {
+    // TODO: API叩く
     setContent(null);
   };
 

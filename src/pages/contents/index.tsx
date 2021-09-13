@@ -8,25 +8,28 @@ const Contents: NextPage<{ contents: any }> = (props) => {
 export default Contents;
 
 export const getStaticProps = () => {
+  // TODO: API叩く
+  const contents = [
+    {
+      id: 1,
+      name: "Hoge",
+      text: "this is hoge.",
+    },
+    {
+      id: 2,
+      name: "Fuga",
+      text: "this is fuga.",
+    },
+    {
+      id: 3,
+      name: "Hoge",
+      text: "this is hoge.",
+    },
+  ];
+
   return {
     props: {
-      contents: [
-        {
-          id: 1,
-          name: "Hoge",
-          text: "this is hoge.",
-        },
-        {
-          id: 2,
-          name: "Fuga",
-          text: "this is fuga.",
-        },
-        {
-          id: 3,
-          name: "Hoge",
-          text: "this is hoge.",
-        },
-      ],
+      contents,
     },
   };
 };
