@@ -1,8 +1,13 @@
 import { NextPage } from "next";
 import List from "../../components/List";
+import { ContentsProvider } from "../../contexts/ContentsProvider";
 
 const Contents: NextPage<{ contents: any }> = (props) => {
-  return <List contents={props.contents} />;
+  return (
+    <ContentsProvider {...props}>
+      <List/>;
+    </ContentsProvider>
+  );
 };
 
 export default Contents;
