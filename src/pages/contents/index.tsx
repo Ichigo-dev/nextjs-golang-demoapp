@@ -1,24 +1,17 @@
 import { NextPage } from "next";
 import { PureComponent } from "react";
 import Link from "next/link";
+import { useState } from "react";
+import ListItem from "../../components/ListItem";
 
 const Contents: NextPage<{ contents: any }> = (props) => {
-  const contents = props.contents;
   return (
     <div>
-      {contents.map((c: { id: number; name: string; text: string }) => {
-        return (
-          <div key={c.id}>
-            <Link href={`/contents/${c.id}`}>
-              <a>
-                <h3>{c.name}</h3>
-                <p>{c.id}</p>
-                <p>{c.text}</p>
-              </a>
-            </Link>
-          </div>
-        );
-      })}
+      {props.contents.map(
+        (c: { id: number; name: string; text: string }, i: number) => {
+          return <ListItem key={i} content={c} />;
+        }
+      )}
     </div>
   );
 };

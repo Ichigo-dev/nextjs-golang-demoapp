@@ -1,18 +1,80 @@
-import React from 'react'
-import Link from 'next/link'
+import React, { useState } from "react";
 
-import { User } from '../interfaces'
+const ListItem: React.FC<{ content: any }> = (props) => {
+  const [content, setContent] = useState(props.content);
+  const [edit, setEdit] = useState(false);
+  const clickHandle = () => {
+    setEdit(!edit);
+  };
 
-type Props = {
-  data: User
-}
+  const closeHandle = () => {
+    setEdit(!edit);
+  };
 
-const ListItem = ({ data }: Props) => (
-  <Link href="/users/[id]" as={`/users/${data.id}`}>
-    <a>
-      {data.id}: {data.name}
-    </a>
-  </Link>
-)
+  const editName = (e) => {
+    setContent({
+      id: content.id,
+      name: e.target.value,
+      text: content.text,
+    });
+  };
 
-export default ListItem
+  const editText = (e) => {
+    setContent({
+      id: content.id,
+      name: content.name,
+      text: e.target.value,
+    });
+  };
+
+  const deleteHandle = () => {
+    setContent(null);
+  };
+
+  if(!content) {
+    return null;
+  }
+
+  return (
+    <div>
+      {!edit && (
+        <div
+          onClick={() => {
+            clickHandle();
+          }}
+        >
+          <h3>{content.name}</h3>
+          <p>{content.id}</p>
+          <p>{content.text}</p>
+        </div>
+      )}
+      {edit && (
+        <div>
+          <p>{content.id}</p>
+          <p>
+            <input
+              type="text"
+              value={content.name}
+              onChange={(e) => {
+                editName(e);
+              }}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              value={content.text}
+              onChange={(e) => {
+                editText(e);
+              }}
+            />
+          </p>
+          <button onClick={() => closeHandle()}>save</button>
+        </div>
+      )}
+      <button onClick={() => deleteHandle()}>delete</button>
+    </div>
+  );
+};
+
+export default ListItem;
