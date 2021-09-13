@@ -7,7 +7,7 @@ const Contents: NextPage<{ contents: any }> = (props) => {
     <div>
       {contents.map((c: { name: string; text: string }) => {
         return (
-          <div>
+          <div key={c.name}>
             <h3>{c.name}</h3>
             <p>{c.text}</p>
           </div>
