@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-const NewListItem: React.FC = () => {
+const NewListItem: React.FC<{newContent: (c) => boolean}> = (props) => {
   const [content, setContent] = useState({ id: "", name: "", text: "" });
 
   const saveHandle = () => {
     // TODO: API叩く
-    setContent({ id: "", name: "", text: "" });
-    // ページリロード等で表示を最新のものにする
+    const ok = props.newContent(content);
+    if (ok) {
+      setContent({ id: "", name: "", text: "" });
+    }
   };
 
   const editID = (e) => {

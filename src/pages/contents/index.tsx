@@ -5,7 +5,7 @@ import { ContentsProvider } from "../../contexts/ContentsProvider";
 const Contents: NextPage<{ contents: any }> = (props) => {
   return (
     <ContentsProvider {...props}>
-      <List/>;
+      <List/>
     </ContentsProvider>
   );
 };

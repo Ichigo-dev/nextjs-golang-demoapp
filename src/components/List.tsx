@@ -6,16 +6,16 @@ import NewListItem from "./NewListItem";
 const List: React.FC = () => {
   const contents = useContents();
   const [cc, setContents] = useState(contents);
-  const clickHandle = () => {
-    setContents([...cc, {id: "4", name: "aaaaa", text: "aaaaaaaa"}])
+  const newContent = (c) => {
+    setContents([...cc, {id: c.id, name: c.name, text: c.text}])
+    return true
   }
   return (
     <div>
       {cc.map((c) => (
         <ListItem key={c.id} content={c} />
       ))}
-      <NewListItem />
-      <button onClick={() => {clickHandle()}}>click</button>
+      <NewListItem newContent={newContent}/>
     </div>
   );
 };
